@@ -1,8 +1,3 @@
-download.file("https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip", method="curl", destfile="exdata-data-household_power_consumption.zip")
-unzip("exdata-data-household_power_consumption.zip")
-data <- read.table("household_power_consumption.txt",header = TRUE, sep = “;”, na.strings = "?", colClasses = c(“character”,  “character”, "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric"))
-data$Date_asDate <- as.Date(data$Date,format="%d/%m/%Y")
-subData <- subset(data, Date_asDate >= as.Date("2007-02-01") & Date_asDate <= as.Date("2007-02-02"))
 subData$dateraw<-paste(subData$Date,subData$Time)
 subData$dateTime <- strptime(subData$dateraw, format="%d/%m/%Y %H:%M:%S")
 png("plot2.png")
